@@ -33,3 +33,7 @@ By default, waiting threads are granted permits in an undefined order. By settin
 
 If the permit is not available, then the invoking thread will be suspended until the permit is available. 
 
+## Notes based on code
+[SemaphoreDemo.java](SemaphoreDemo.java)
+
+Notice the `Thread.sleep()` in both `IncThread` and `DecThread`. In a normal case, without semaphore *sleep()* causes the second thread to run, in a nomral multihreaded setup. However, because of the semaphore, the second thread must wait until the first has released the permit. That is the reason why in the logs, increments and decrements are not intermixed. 
