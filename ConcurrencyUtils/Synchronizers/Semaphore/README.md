@@ -38,6 +38,6 @@ If the permit is not available, then the invoking thread will be suspended until
 
 Notice the `Thread.sleep()` in both `IncThread` and `DecThread`. In a normal case, without semaphore `Thread.sleep()` causes the second thread to run, in a nomral multihreaded setup. However, because of the semaphore, the second thread must wait until the first has released the permit. That is the reason why in the logs, increments and decrements are not intermixed.
 
-[Q.java][Q.java]
+[Q.java](Q.java)
 
 The calls to `get()` and `put()` are synchronized. Each call to `put()` is followed by `get()`. Without semaphore it would not be possible. 
