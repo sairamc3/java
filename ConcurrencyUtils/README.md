@@ -19,6 +19,7 @@ It defines core features that support alternative to the built-in approaches to 
 
 #### Synchronizers
 
+|    |     |
 |----|-----|
 |Semaphor| Controls access to a shared resource through the user of counter | 
 |CountDownLatch| Waits until the specified number of events occured|
