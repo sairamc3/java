@@ -52,3 +52,28 @@ It supports parllel programming. It's main classes are
 - **ForkJoinPool**
 - **RecursiveTask**
 - **RecursiveAction**
+
+### java.util.concurrent.atomic
+
+This package facilitates the use of variables in a concurrent environment. It provides a means of efficiently updating the value of a variable without the use of locks. This is accomplished through use of classes, such as
+- **AtomicInteger**
+- **AtomicLong**
+
+and methods such as 
+
+- *compareAndSet()*
+- *decrementAndGet()*
+- *getAndSet()*
+
+These methods execute as a single, non-interruptible operation.
+
+### java.util.concurrent.locks
+
+This package provides an alternative to the user of synchroinzed methods. At core of this is **Lock** interface, which provides the basic mechanism used to acquire and relinquish access to an object. 
+
+**Lock**
+- *lock()*
+- *tryLock()*
+- *unlock()*
+
+The advantage of using these methods is greater control over synchronization.
