@@ -27,6 +27,6 @@ Both forms return a value that indicats the order that the threads arrive at the
 - 1st thread return (no of threads - 1)
 - last thread returns zero.
 
-
+> The precise order in which threads execute may vary.
 
 
