@@ -64,4 +64,26 @@ Suppose, you might have threads that implement three phases of an order-processi
 - Each time the phase will be paused until all the threads A,B,C arrives.
 - The three threads **Derigister** and then in the last main thread Derigsters, which terminates the **Phaser**
 
+### [PhaserDemo2.java](Demo2/PhaserDemo2.java)
 
+It's possible to take control of what happens when a phase advance occurs. 
+
+To do this you much `@Override` method `onAdvance()`. This method is called by the run time when a phaser advances from one phase to next. 
+
+```java
+protected boolean onAdvance(int phase, int numParties)
+```
+- `phase` will contain the current phase number
+- `numParties` will contain no of registered parties
+
+> To terminate the phaser, `onAdvance()` should return `true`. To keep phaser alive, it should return `false`
+
+#### Code 
+
+- The **MyPhaser** is configured with 4 phases and registered 4 parties.
+- The threads and the main class will `arriveAndAwaitAdvance` until the phaser terminates. i.e., until the specified no of phases has reached.
+
+```java
+if(p == numPhases || regParties == 0) return true;
+```
+- If the current phase equal to the number of configured phases, or if the registered parties are zero then the `onAdvance` method would return `true`. Which would terminate the phaser. 
