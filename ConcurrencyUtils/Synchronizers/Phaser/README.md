@@ -52,7 +52,7 @@ Suppose, you might have threads that implement three phases of an order-processi
 
 ## Coding explination
 
-### [PhaserDemo.java](PhaserDemo.java)
+### [PhaserDemo.java](Demo1/PhaserDemo.java)
 
 - The **Phaser** registered 4 parties(Threads)
     1. main thread (through constructor)
