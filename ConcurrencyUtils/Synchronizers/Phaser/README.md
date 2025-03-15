@@ -49,3 +49,19 @@ Suppose, you might have threads that implement three phases of an order-processi
 - *int arriveAndAwaitAdvance()* -> To indicate the completion of the phase and then wait until all other parties have also completed the task
 - *int arriveAndDeregister()* -> Arrive and then deregister itself. It does not wait until the phase is complete.
 - *final int getPhase()* -> To obtain current phase number.
+
+## Coding explination
+
+### [PhaserDemo.java](PhaserDemo.java)
+
+- The **Phaser** registered 4 parties(Threads)
+    1. main thread (through constructor)
+    2. A (through *register()* in constructor of **MyThread**)
+    3. B
+    4. C
+- There are 3 phases
+    - Main thread `phaser.arriveAndAwaitAdvance()` 3 times
+- Each time the phase will be paused until all the threads A,B,C arrives.
+- The three threads **Derigister** and then in the last main thread Derigsters, which terminates the **Phaser**
+
+
