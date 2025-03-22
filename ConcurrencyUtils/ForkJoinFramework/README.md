@@ -97,6 +97,14 @@ There are two ways you can start a `ForkJoinTask` from common pool.
 2. From the `ForkJoinTask<V>` itself, if you call the methods, `fork()` or `invoke()`, it will start a task using the *common pool*
 
 
+- `ForkJoinPool` manages the execution of the threads using an approach called *Work-stealing*
+    - Each worker thread maintains a queue of tasks
+    - If one threads queue is empty, it will take a task from another thread. 
+    - This adds to overall efficiency and helps to maintain balanced load.
+- `ForkJoinPool` uses **Deamon threads**
+    - A *Deamon thread* is automcatically terminated when all the user threads have terminated.
+    - There is no need to explicitely shutdown `ForkJoinPool`.
+    - However there is an excpetion for *Common pool*. 
+    - The `shutdown()` will not have any effect on *Common Pool*.
 
-- 
 
