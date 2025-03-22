@@ -68,5 +68,35 @@ This by the use of `fork()` and `join()`, you can start one or more new tasks an
 
 > In general, `RecusriveTask<V>` is used to implement a recursive, divide-and-conquer strategy for tasks that return results. 
 
+### `ForkJoinPool`
 
+- The execution of `ForkJoinTask` happens with in `ForkJoinPool`, which also manages the execution of tasks.
+- In order to execute `ForkJoinTask`, you must have `ForkJoinPool`.
+
+Ways to create 
+1. You can use constructor
+2. You can use from *common pool*. It's a static `ForkJoinPool` that is automatically availalble for use. 
+
+#### Constructors
+
+- `ForkJoinPool()` -> Level of parllelism is equual to number of processors available.
+- `ForkJoinPool(int pLevel)` -> Level of parllelist should be > 0 and should not be more than the limits of implementation.
+
+> `Level of parllelism` is nothing but number of threads that can run parllelly. It's important to note that level of parllelism does not limit the number of task that can be managed by the pool. 
+
+`ForkJoinPool` can manage many more tasks than its level of parllelism. 
+
+#### Methods
+
+- `<T> T invoke(ForkJoinTask<T> task)` - This method return result, hence the calling thread waits until the `invoke()` returns. 
+- `void execute(ForkJoinTask<?> task)` - The calling thread does not wait for its completion.
+- `static ForkJoinPool commonPool()` - A refernce to the common pool will be returned. 
+
+There are two ways you can start a `ForkJoinTask` from common pool. 
+1. Get the reference of the *common pool* from the `commonPool()` static method and call `invoke()` or `execute()`.
+2. From the `ForkJoinTask<V>` itself, if you call the methods, `fork()` or `invoke()`, it will start a task using the *common pool*
+
+
+
+- 
 
