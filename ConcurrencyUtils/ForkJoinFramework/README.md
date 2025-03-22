@@ -46,3 +46,27 @@ This by the use of `fork()` and `join()`, you can start one or more new tasks an
 - `static void invokeAll(ForkJoinTask<?> taskA, ForkJoinTask<?> taskB)`
 - `static void invokeAll(ForkJoinTask<?> ... taskList)`
 
+### `RecursiveAction`
+
+- A subclass of `ForkJoinTask`
+- It encapsulates a task that does not return a result
+
+#### Methods
+
+- `protected abstract void compute()`
+
+> In general, `RecusriveAction` is used to implement a recursive, divide-and-conquer strategy for tasks that don't return results. 
+
+### `RecursiveTask<V>`
+
+- A subclass of `ForkJoinTask`
+- It encapsulates a task that returns a result
+
+#### Methods
+
+- `protected abstract V compute()`
+
+> In general, `RecusriveTask<V>` is used to implement a recursive, divide-and-conquer strategy for tasks that return results. 
+
+
+
