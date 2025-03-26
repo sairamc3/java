@@ -2,7 +2,7 @@
 
 ## SOLID principles
 
-- **S** -> [Single responsibility principle](SingleResponsibilityPrinciple/README.md)
+- **S** -> [Single responsibility principle](SingleResponsibilityPrinciple)
 - **O** -> Open/Closed Principle
 - **L** -> Liskov Substitution Principle
 - **I** -> Interface Segregation Principle
