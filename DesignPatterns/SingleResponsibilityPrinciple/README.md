@@ -28,4 +28,5 @@ So, before you make a class, identify the responsibility or purpose of the class
 
 ### [With Single Responsibility](Single/Client.java)
 
-
+- *SRP* does not say that the class should have exactly one method. 
+- For example, if the employee class has different methods to show the firstName and lastName, that's fine. These methods are closely related. 
