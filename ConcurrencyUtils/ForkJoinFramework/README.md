@@ -107,4 +107,9 @@ There are two ways you can start a `ForkJoinTask` from common pool.
     - However there is an excpetion for *Common pool*. 
     - The `shutdown()` will not have any effect on *Common Pool*.
 
+- `void execute(ForkJoinTask<?> task)` -> to start a task asynchronously.
+- `void execute(Runnable task)` -> to start using traditional threads.
 
+> This is coming from `Executors`. `ForkJoinPool` is one of the **Executors**.
+
+Ref: [Executor Classes](../Executor#classes)
