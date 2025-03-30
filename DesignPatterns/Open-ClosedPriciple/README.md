@@ -30,5 +30,11 @@
         - **Science** -> above **80**
         - **Arts** -> above **70**
 
+### [Without Open/Close Principle](WithoutOpenClosePrinicple/Client.java)
 
+- If in the future the examining authority changes the distinction criteria, you do not touch the Student Class. So this part is closed for modification. 
+- The college authority can introduce a new stream such as **Commerce** and sets a new distinction criteria for this stream. 
+- You need to make the same choices again. 
+    - You need to modify `evaluateDistinction()` method and add another `if` statement to consider the commerce students. 
+- So the class `DistinctionDecider` is not closed for modification. 
 - 
