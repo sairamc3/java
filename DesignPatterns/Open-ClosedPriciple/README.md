@@ -6,7 +6,7 @@
 - If you require new features, instead of changing the existing class, you can extend it to adopt the new requirements.
 - Since you do not change the old code, your existing functionalities continue to work without any problems, and you can avoid testing them again. Instead you can test the *extended* part only. 
 
-> **A class is closed, since it may be compiled, stored in a library, baselined, and used by client classes. But it is also open, since any new class may use it as parent, adding new features. When the descendant class is defined, there is no need to change the original or to disturb its clients. 
+> **A class is closed, since it may be compiled, stored in a library, baselined, and used by client classes. But it is also open, since any new class may use it as parent, adding new features. When the descendant class is defined, there is no need to change the original or to disturb its clients. **
 
 - But inheritence promotes tight coupling. 
 - In Programming, we would like to remove these tight couplings. 
