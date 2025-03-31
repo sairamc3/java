@@ -9,28 +9,37 @@ class Client {
         ScienceDistinctionDecoder scienceDistinctionDecoder = new ScienceDistinctionDecoder();
         ArtsDistinctionDecoder artsDistinctionDecoder = new ArtsDistinctionDecoder();
 
-        List<Student> students = enrollStudents();
+        List<Student> scienceStudents = enrollScienceStudents();
+        List<Student> artsStudents = enrollArtsStudents();
 
-        students.forEach(System.out::println);
+        scienceStudents.forEach(System.out::println);
+        artsStudents.forEach(System.out::println);
 
-        for (Student student : students) {
-            if (student instanceof ScienceStudent) {
-                scienceDistinctionDecoder.evaluateDistinction(student);
-            } else if (student instanceof ArtsStuddent) {
-                artsDistinctionDecoder.evaluateDistinction(student);
-            }
+        for (Student student : scienceStudents) {
+            scienceDistinctionDecoder.evaluateDistinction(student);
+        }
+        for (Student student : artsStudents) {
+            artsDistinctionDecoder.evaluateDistinction(student);
         }
 
     }
 
-    private static List<Student> enrollStudents() {
+    private static List<Student> enrollScienceStudents() {
 
         Student sam = new ScienceStudent("Sam", "R1", 81.5, "Comp.Sc.");
         Student bob = new ScienceStudent("Bob", "R2", 72, "Physics");
+
+        List<Student> students = Arrays.asList(sam, bob);
+
+        return students;
+    }
+
+    private static List<Student> enrollArtsStudents() {
+
         Student john = new ArtsStuddent("John", "R3", 71, "History");
         Student kate = new ArtsStuddent("Kate", "R4", 66.5, "English");
 
-        List<Student> students = Arrays.asList(sam, bob, john, kate);
+        List<Student> students = Arrays.asList(john, kate);
 
         return students;
     }
