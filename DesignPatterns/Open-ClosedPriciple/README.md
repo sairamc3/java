@@ -37,4 +37,11 @@
 - You need to make the same choices again. 
     - You need to modify `evaluateDistinction()` method and add another `if` statement to consider the commerce students. 
 - So the class `DistinctionDecider` is not closed for modification. 
-- 
+
+### [With Open/Close Principle](WithOpenClosePrinciple/Client.java)
+
+- The `Student` class and `DistinctionDecider` class both are unchanged for any future changes in the distinction criteria. They are closed for modification
+- Every participant follows **SRP**
+- If there is a new stream **Commerce**, You can create a new class `CommerceStudent`. In this case, you need not touch `ScienceStudent` or `ArtsStudent`
+- Similarly, you can add new `CommerceDistinctionDecider` that implements `DistinctionDecider`. In this case, you need not touch `ScienceDistinctionDecider` or `ArtsDistinctionDecider`. 
+- Using this approach, we are avoiding the `if-else` chain. 
