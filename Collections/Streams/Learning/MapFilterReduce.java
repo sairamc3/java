@@ -32,6 +32,7 @@ public class MapFilterReduce {
         findMaxOfTheReadingss(readings);
         findSumOfTheReadings(readings);
         findSumUsingReduceOperator(readings);
+        findSumUsingReduceOperatorWithoutOptional(readings);
     }
 
     private static void squersGreaterThan20Count() {
@@ -101,6 +102,16 @@ public class MapFilterReduce {
 
         System.out.println("Sum using reduce method -> " + sum.getAsDouble());
 
+    }
+
+    private static void findSumUsingReduceOperatorWithoutOptional(List<Reading> readings) {
+
+        double sum = readings
+                .stream()
+                .mapToDouble(Reading::getValue)
+                .reduce(0, (a, b) -> a + b);
+
+        System.out.println("Sum using reduce and without optional ->" + sum);
     }
 
 }
