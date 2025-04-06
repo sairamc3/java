@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Formatter.BigDecimalLayoutForm;
 import java.util.stream.Collectors;
 
@@ -28,6 +30,10 @@ public class CollectingValues {
         groupingBasedOnAgeAndValueAsNames(persons);
         groupByIfAgeGreaterThan34(persons);
         groupByIfAgeGreaterThan34WithNames(persons);
+        findSumOfTheAgesOfPeopleWithSameName(persons);
+        findAverageAgeOfPeopleWithSameName(persons);
+        findNamesWhoseAgeIsMoreThan34(persons);
+        findPersonWithMaxAge(persons);
 
     }
 
@@ -92,10 +98,52 @@ public class CollectingValues {
 
         Map<Boolean, List<String>> personsBy34 = persons.stream()
                 .collect(
-                        Collectors.partitioningBy(person -> person.getAge() > 34, 
-                        Collectors.mapping(Person::getName, Collectors.toList())));
+                        Collectors.partitioningBy(person -> person.getAge() > 34,
+                                Collectors.mapping(Person::getName, Collectors.toList())));
 
         System.out.println("Partitioned based on age 34 names -> " + personsBy34);
+    }
+
+    private static void findSumOfTheAgesOfPeopleWithSameName(List<Person> persons) {
+
+        Map<String, Integer> sumOfAges = persons.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Person::getName,
+                                Collectors.summingInt(Person::getAge)));
+
+        System.out.println("Sum of age of  people with same name -> " + sumOfAges);
+    }
+
+    private static void findAverageAgeOfPeopleWithSameName(List<Person> persons) {
+
+        Map<String, Double> averageOfAges = persons.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Person::getName,
+                                Collectors.averagingInt(Person::getAge)));
+
+        System.out.println("Average age of people with same name -> " + averageOfAges);
+    }
+
+    private static void findNamesWhoseAgeIsMoreThan34(List<Person> persons) {
+
+        String names = persons.stream()
+                .filter(person -> person.getAge() > 34)
+                .map(Person::getName)
+                .collect(Collectors.joining(","));
+
+        System.out.println("The persons crossing age 34 are -> " + names);
+    }
+
+    private static void findPersonWithMaxAge(List<Person> persons) {
+
+        Comparator<Person> byAge = Comparator.comparing(Person::getAge);
+
+        Optional<Person> maxAgePerson = persons.stream()
+                .collect(Collectors.maxBy(byAge));
+
+        maxAgePerson.ifPresent(person -> System.out.println("Oldest Person in the list is -> " + person));
     }
 }
 
