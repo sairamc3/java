@@ -6,4 +6,6 @@ So why does the interface contain all these methods?
 
 One possible answer is to support the implementing classes of this interface. This is the area that **Interface Segregation Principle** focuses on.
 
-The idea is *a client should not depend on the method that it does not use*. 
+The idea is *a client should not depend on the method that it does not use*.
+
+So instead of implementing the fat interface, divide the interface into multiple interfaces. The beside example shows clearly with an example. 
