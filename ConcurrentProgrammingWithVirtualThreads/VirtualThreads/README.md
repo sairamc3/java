@@ -95,3 +95,16 @@ With virtual threads it is fine to write blocking code.
 
 ## Virtual Threads in Action
 
+There are java files in this folder, which will give you glimpse. 
+
+The result of one million threads is notable. Here is the result. 
+
+```bash
+
+# Virtual threads = 1000000
+# Cores = 8
+# Time = 1079ms
+### Pools 1000000
+ForkJoinPool-1
+# Platform threads = 1
+```
