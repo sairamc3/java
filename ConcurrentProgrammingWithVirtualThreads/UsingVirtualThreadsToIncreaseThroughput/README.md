@@ -25,3 +25,38 @@ How can it be more efficient than plain concurrent programming?
 > If the task is to do computational tasks, then use platform threads
 > If the task is a blocking task, like waiting for a response over internet, then use virtual thread. 
 
+## Blocking a virtual thread
+
+The example shows creation of multiple threads and blocking operations are done in the threads. It demonstrates how the virtual thread behaviour would be. The tasks were executed by different carrier threads. 
+
+## Continuation
+
+The continuation feature is to be applied when preview feature is enabled in java 21. 
+
+```java
+var scope = new ContinuationScope("My Scope");
+var continuation = new Continuation(scope, 
+                        () -> {
+                            System.out.println("Running in a continuation");
+                            Continuation.yield(scope);
+                            System.out.println("After the call to yield");
+                            });
+System.out.println("Running in the main method");
+
+// Calling it for the first time
+continuation.run();
+System.out.println("Back in the main method");
+
+//Calling it for the second time
+continuation.run();
+System.out.println("Back again in the main method");
+
+```
+The behaviour of the application in the previous example.
+* The `Continuation` constructors contains two parameters (Scope, Runnable).
+* The thread will the executed when `continuation.run()` is called for the first time. 
+* It will be paused at the point `Continuation.yield(scope)`
+* The main thread part will be executed next
+* If the second time calling `continuation.run()`, does not exist, then the remaining part of the code in the thread will not be executed.
+* When the second call to `continuation.run()` is called, then the thread will continue to execute from the point where it was paused earlier. 
+
