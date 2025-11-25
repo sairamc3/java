@@ -128,4 +128,12 @@ Process finished with exit code 0
 
 ```
 
-Here the virtual threads are not pinned are getting assigned to different carrier threads. 
+Here the virtual threads are not pinned are getting assigned to different carrier threads.
+
+## Comparing Reactive and Virtual threads
+
+* Both approaches rely on the fact that your platform thread should never be blocked
+* Reactive frameworks put this responsibility on you
+* Virtual threads delegates this on the API (I/O, JDBC, etc...)
+* From your platform thread perspective, there is no difference between reactive programming and virtual threads
+* The most important difference is the programming model
