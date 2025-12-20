@@ -1,0 +1,23 @@
+package com.plurasight.orderservice.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@RedisHash("orders")
+public class Order {
+    @Id
+    private String orderId;
+    private String userId;
+    private String orderStatus;
+    private Double totalPrice;
+    private String source;
+    private String destination;
+}
