@@ -31,11 +31,11 @@
 ### Logs
 
 #### Log Levels
-**Error:** A serious issue causing a failure
-**Warning:** A potential problem that needs attention
-**Info:** General details about normal operations
-**Debub:** Detailed logs for troubleshooting
-**Trace:** Most detailed logs for tracing execution
+- **Error:** A serious issue causing a failure
+- **Warning:** A potential problem that needs attention
+- **Info:** General details about normal operations
+- **Debub:** Detailed logs for troubleshooting
+- **Trace:** Most detailed logs for tracing execution
 
 ## Open Telemetry
 
@@ -60,6 +60,24 @@ For running the application we need Redis database. Here is the docker command t
 ```bash
 docker run -d --rm --name redis -p 6379:6379 redis:latest
 ```
+The above command is required only during the initial setup. Later it has been moved to docker-compose file. 
 
+Although there are many things done during the setup, the easiest way to run them with the final product would be
+
+#### Orders Service
+```bash
+mvn clean package
+docker build -t orders-service:1.0 .
+```
+
+#### Delivery Service
+```bash
+mvn clean package
+docker build -t delivery-service:1.0 .
+```
+
+The above are the application docker image. Rest of the configurations are already present in the docker compose files. 
+
+If there is any issue with setting up the application, then please check the paths mentioned in the configuration files and spring applications. 
 
 
