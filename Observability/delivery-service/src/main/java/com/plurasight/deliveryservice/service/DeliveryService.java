@@ -1,15 +1,27 @@
 package com.plurasight.deliveryservice.service;
 
 import com.plurasight.deliveryservice.model.Delivery;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.text.RandomStringGenerator;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class DeliveryService {
 
 
     public Delivery createDelivery(Delivery delivery) {
-        return generateDeliveryId(delivery);
+
+        log.info("Creating delivery for source {}, and destination {}", delivery.getSource(), delivery.getDestination());
+
+        Delivery returnedDelivery = generateDeliveryId(delivery);
+
+        log.info("Order delivery created with id {}, source {}, destination {}",
+                returnedDelivery.getId(),
+                delivery.getSource(),
+                delivery.getDestination());
+
+        return returnedDelivery;
     }
 
     private Delivery generateDeliveryId(Delivery delivery) {
