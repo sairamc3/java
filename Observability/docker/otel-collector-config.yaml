@@ -10,21 +10,27 @@ processors:
 exporters:
   file:
     path: /etc/telemetry-data.json
-  debug:
-    verbosity: detailed
+  otlphttp/metrics:
+    endpoint: "http://mimir-1:8080/otlp"
+    headers:
+      "X-Scope-OrgID": "plurasight"
+  otlphttp/traces:
+    endpoint: "http://tempo:4318"
+  otlphttp/logs:
+    endpoint: "http://loki:3100/otlp"
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [file]
+      exporters: [otlphttp/traces]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [file, debug]
+      exporters: [otlphttp/metrics]
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [file]
+      exporters: [otlphttp/logs]
     

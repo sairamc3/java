@@ -15,7 +15,7 @@ public class DeliveryClient {
 
     private final RestClient restClient;
     private static final String DELIVERY_URL = "/deliveries";
-    private static final String BASE_URL = "http://localhost:6001";
+    private static final String BASE_URL = "http://delivery-service:6001";
 
     public Delivery createDeliveryForOrder(Order order) {
 
