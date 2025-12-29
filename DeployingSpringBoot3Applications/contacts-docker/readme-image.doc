@@ -1,0 +1,22 @@
+at root dir 
+
+#Build the image
+docker build -t docker-contact .
+
+#Run the image
+docker run -ditp 127.0.0.1:3000:8080 --name contacts docker-contact
+
+#process list the contain
+docker ps
+
+#stop the container
+docker stop contacts
+
+#remove image
+docker rm contacts
+
+#show container logs
+docker logs contacts
+
+#log into container
+docker exec -it contacts bash

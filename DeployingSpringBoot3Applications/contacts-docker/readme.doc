@@ -1,0 +1,5 @@
+Just using docker with a pull and run
+
+docker pull amazoncorretto:21
+
+docker run -e DB_USERNAME='admin' -e DB_PASSWORD='pass1234' -v ./contacts-0.0.1-SNAPSHOT.jar:/app/contacts-0.0.1-SNAPSHOT.jar -p 8080:8080 amazoncorretto:21 java -jar /app/contacts-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
